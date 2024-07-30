@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Wedding Invitation</title>
+    <link rel="icon" href="{{ asset('img/LOGO PONDOK.ico') }}" type="icon">
     <link rel="stylesheet" href="{{ asset('build/assets/style.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
@@ -18,6 +19,7 @@
             background: #0a3300;
             color: #333;
             width: 100%;
+            /* height: 100vh auto; */
         }
 
         body::-webkit-scrollbar {
@@ -41,6 +43,7 @@
         .pre-landing {
             text-align: center;
             padding: 0px;
+            width: 100% auto;
             height: 100vh;
             background: url({{ asset('img/bg.png') }}) repeat center center;
             background-size: cover;
@@ -125,8 +128,8 @@
         }
 
         .container {
-            width: 95%;
-            margin: 15px;
+            width: 94%;
+            margin: 15px 25px 15px 15px;
             background: #fff;
             /* padding: 20px; */
             /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -717,7 +720,7 @@
         {{-- <img src="images/couple.png" alt="Couple"> --}}
         <h1 class="slide-in" style="font-family: Quaylike; font-size: 25pt">The Wedding of</h1>
         <br><br>
-        <img class="slide-left" src="{{ asset('img/nama.png') }}">
+        <img class="slide-left" src="{{ asset('img/nama.png') }}" style="width: 70%">
         <br><br>
         <p class="slide-right">Kepada Yth.</p>
         <p class="slide-right">Bapak/Ibu/Saudara/i</p>
@@ -736,9 +739,7 @@
             <header
                 style="background: url({{ asset('img/bg-hp2.png') }}) no-repeat center center;background-size: cover;height: 100vh;display: flex;align-items: center;justify-content: center;">
                 <h1 class="slide-in" style="font-family: Quaylike; font-size: 25pt">Save The Date</h1>
-                <br><br>
-                {{-- <h2>Ning Alia & Ra Abdillah</h2> --}}
-                <img class="animate__animated animate__pulse" src="{{ asset('img/nama_cover.png') }}">
+                <img class="animate__animated animate__pulse" src="{{ asset('img/nama_cover.png') }}" style="width: 70%">
                 <p class="slide-out"><b>Sabtu, 17 Agustus 2024</b></p>
                 <div class="timer">
                     <div class="timer-jalan slide-out"><span id="days">00</span>
@@ -764,27 +765,26 @@
                 <img class="slide-in" src="{{ asset('img/bismillah.png') }}" alt="bismillah" width="75%">
                 <br>
                 <img class="slide-in" src="{{ asset('img/assalam.png') }}" alt="assalam" width="70%">
-                <p class="slide-in">Dengan rahmat & ridho dari Allah Subhanahu Wa
-                    Ta’ala, kami mengundang bapak/ibu/saudara/i pada
+                <p class="slide-in">Dengan rahmat & ridho Allah SWT, kami bermaksud mengundang bapak/ibu/saudara/i pada
+                    <b>RESEPSI PERNIKAHAN</b>
                 </p>
-                <p class="slide-in"><b>RESEPSI PERNIKAHAN</b></p>
-                <p class="slide-in">putra putri kami tercinta</p>
+                <p class="slide-in">putra-putri kami tercinta</p>
                 <img class="slide-left" src="{{ asset('img/alia.png') }}" alt="ning_alia" width="80%"
                     style="margin-top: 20px">
-                <h5 class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Putri Dari</h5>
-                <h5 class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Muhammad Sulaiman Nur Basyaiban,
+                <h5 class="slide-left" style="font-size: clamp(12.5px, 1vw, 18px)">Putri Dari</h5>
+                <h5 class="slide-left" style="font-size: clamp(12.5px, 1vw, 18px)">K.H Muhammad Sulaiman Nur Basyaiban,
                     M.Pd</h5>
-                <h5 class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">& Nyai Hj. Anny Hermawati, S.H</h5>
+                <h5 class="slide-left" style="font-size: clamp(12.5px, 1vw, 18px)">& Nyai Hj. Anny Hermawati, S.H</h5>
                 <h5 class="slide-in" style="font-family: Quaylike; font-size: 15pt; padding: 10px">Dengan</h5>
                 <img class="slide-right" src="{{ asset('img/abdillah.png') }}" alt="ra_abdillah" width="80%">
-                <h5 class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Putra Dari</h5>
-                <h5 class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Achmad Muhalli (Alm) & Nyai Hj.
+                <h5 class="slide-right" style="font-size: clamp(12.5px, 1vw, 18px)">Putra Dari</h5>
+                <h5 class="slide-right" style="font-size: clamp(12.5px, 1vw, 18px)">K.H Achmad Muhalli (Alm) & Nyai Hj.
                     Maimunah</h5>
             </section>
 
 
             <section id="event">
-                <p class="slide-in" style="padding-bottom: 10px">Dengan izin Allah acara akan dilaksanakan pada :</p>
+                {{-- <p class="slide-in" style="padding-bottom: 10px">Dengan izin Allah acara akan dilaksanakan pada :</p> --}}
                 <div style="width: ">
                     <p class="slide-left" style="padding: 5px 5px 5px 20px; text-align: left"><b><i
                                 class="fas fa-calendar-alt"></i>
@@ -802,15 +802,38 @@
                 <p class="slide-right"><b><i class="fas fa-map-marker-alt"></i> Jl. Raya
                         Bungur Tatas RT.26, Baru, Arut Selatan, Kotawaringin Barat, Kalimantan Tengah</b></p>
                 <br>
-                <iframe class="slide-out" style="border-radius: 10px"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.23050999812!2d111.66604864024895!3d-2.6412298253627315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e08edf5b174faa9%3A0xea0c754018b551e6!2sEntrepreneur%20Ponpes%20Dar%20Al-Raudhah!5e0!3m2!1sen!2sid!4v1720886607603!5m2!1sen!2sid"
-                    width="95% auto" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <p class="slide-out" style="padding: 0px">Atas kehadiran dan do'a restunya kami ucapkan banyak terima
+                    kasih
+                </p>
+                <h2 class="slide-left" style="padding: 0px; margin: 0px">Hormat kami</h2>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Keluarga
+                </p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Muhammad Sulaiman Nur Basyaiban,
+                    M.Pd</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Nyai Hj. Anny Hermawati, S.H</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Achmad Muhalli (Alm)</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Nyai Hj. Maimunah</p>
+                <br>
+                <h2 class="slide-right" style="padding: 0px; margin: 0px">Turut Mengundang</h2>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Pihak
+                    Mempelai Wanita</p>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
+                    Entrepreneur Dar Al-Raudhah</p>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">PANGKALAN BUN - KALTENG</p>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Pihak
+                    Mempelai Pria</p>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
+                    Baity Raya</p>
+                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">PAMEKASAN - JATIM</p>
+                <img class="slide-out" src="{{ asset('img/wassalam.png') }}" alt="wassalam"
+                    style="padding: 0px; margin: 0px; width: 70%">
+
             </section>
 
             <section id="kado">
                 <h1 class="slide-in" style="font-family: Quaylike;"><i class="fas fa-gifts"></i> Kado Digital</h1>
-                <p class="slide-in">Doa Restu Anda merupakan karunia yang sanget berarti bagi kami. Dan jika memberi
+                <p class="slide-in">Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi
                     adalah ungkapan
                     tanda terima kasih Anda, Anda dapat memberi kado secara langsung atau tidak langsung.</p>
                 <br>
@@ -889,30 +912,10 @@
 
             <footer
                 style="background: url({{ asset('img/bg-hp2.png') }}) no-repeat center center;background-size: cover;height: 100vh;display: flex;align-items: center;justify-content: center;">
-                <img class="slide-in" src="{{ asset('img/wassalam.png') }}" alt="wassalam" style="padding: 0px; margin: 0px; width: 70%">
-                <p class="slide-in" style="padding: 0px">Atas kehadiran dan do'a restunya kami ucapkan terima kasih
-                </p>
-                <h2 class="slide-left" style="padding: 0px; margin: 0px">Hormat kami</h2>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Keluarga
-                </p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Muhammad Sulaiman Nur Basyaiban,
-                    M.Pd</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">& Nyai Hj. Anny Hermawati, S.H</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Achmad Muhalli (Alm) & Nyai Hj.
-                    Maimunah</p>
-                <br>
-                <h2 class="slide-right" style="padding: 0px; margin: 0px">Turut Mengundang</h2>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Pihak
-                    Mempelai Wanita</p>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
-                    Entrepreneur Dar Al-Raudhah</p>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">PANGKALAN BUN - KALTENG</p>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Pihak
-                    Mempelai Pria</p>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
-                    Baity Raya</p>
-                <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">PAMEKASAN - JATIM</p>
+                <iframe class="slide-out" style="border-radius: 10px"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2818.23050999812!2d111.66604864024895!3d-2.6412298253627315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e08edf5b174faa9%3A0xea0c754018b551e6!2sEntrepreneur%20Ponpes%20Dar%20Al-Raudhah!5e0!3m2!1sen!2sid!4v1720886607603!5m2!1sen!2sid"
+                    width="90%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <br>
                 <div class="slide-out"
                     style="border: 2px double #135e00; width: 90%; border-radius:10px; height: 150px">
@@ -922,14 +925,16 @@
                     <h3 style="padding: 0px; margin: 0px">Support :</h3>
                     <br>
                     <div id="support">
-                        <a href="https://www.youtube.com/@daratv_Channel" target="_blank" rel="noopener noreferrer" class="sup-button youtube"><i
-                                class="fab fa-youtube"></i></a>
-                        <a href="https://web.facebook.com/ponpesdarurraudhah" target="_blank" rel="noopener noreferrer" class="sup-button facebook"><i
+                        <a href="https://www.youtube.com/@daratv_Channel" target="_blank" rel="noopener noreferrer"
+                            class="sup-button youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://web.facebook.com/ponpesdarurraudhah" target="_blank"
+                            rel="noopener noreferrer" class="sup-button facebook"><i
                                 class="fab fa-facebook-square"></i></a>
-                        <a href="https://www.instagram.com/ppe_daralraudhah/" target="_blank" rel="noopener noreferrer" class="sup-button instagram"><i
+                        <a href="https://www.instagram.com/ppe_daralraudhah/" target="_blank"
+                            rel="noopener noreferrer" class="sup-button instagram"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://ponpesdara.com" target="_blank" rel="noopener noreferrer" class="sup-button website"><i
-                                class="fas fa-link"></i></a>
+                        <a href="https://ponpesdara.com" target="_blank" rel="noopener noreferrer"
+                            class="sup-button website"><i class="fas fa-link"></i></a>
                         {{-- <a href="http://" target="_blank" rel="noopener noreferrer" class="sup-button whatsapp"><i
                                 class="fab fa-whatsapp"></i></a> --}}
                     </div>
