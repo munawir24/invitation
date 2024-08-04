@@ -10,7 +10,7 @@ class Pesan extends Model
     use HasFactory;
     protected $table = 'tb_kirim_pesan';
     protected $fillable = [
-        'id_slug','nama','pesan'
+        'id_slug','nama','pesan','absen'
     ];
     public $timestamps = true;
 

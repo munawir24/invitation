@@ -7,10 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Wedding Invitation</title>
     <link rel="icon" href="{{ asset('img/LOGO PONDOK.ico') }}" type="icon">
-    <link rel="stylesheet" href="{{ asset('build/assets/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('adminlte/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.css') }}">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -43,7 +44,7 @@
         .pre-landing {
             text-align: center;
             padding: 0px;
-            width: 100% auto;
+            /*width: 100%;*/
             height: 100vh;
             background: url({{ asset('img/bg.png') }}) repeat center center;
             background-size: cover;
@@ -51,7 +52,6 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-size: cover;
         }
 
         .pre-landing img {
@@ -128,10 +128,10 @@
         }
 
         .container {
-            width: 94%;
-            margin: 15px 25px 15px 15px;
-            background: #fff;
-            /* padding: 20px; */
+            width: 97%;
+            /* margin: 2% 3% 2% 2%; */
+            background: transparent;
+            padding: 1.5%;
             /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
         }
 
@@ -143,14 +143,14 @@
             color: #fff;
             display: flex;
             justify-content: space-around;
-            padding: 20px 0px;
+            padding: 0px 0px 0px 0px;
             border-radius: 10px;
         }
 
         .timer-jalan {
             background: #0a3300;
             padding: 20px;
-            margin: 5px;
+            margin: 1%;
             border-radius: 10px;
             text-align: center;
             color: #ffffff;
@@ -475,7 +475,7 @@
             }
 
             100% {
-                transform: translateY(5800px);
+                transform: translateY(20500%);
             }
         }
 
@@ -568,9 +568,9 @@
         .modal-content {
             background-color: #fefefe;
             margin: 5% auto;
-            padding: 20px;
+            padding: 5%;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             animation-name: modalopen;
@@ -621,6 +621,20 @@
             cursor: pointer;
         }
 
+        .close2 {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close2:hover,
+        .close2:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         .modal-body {
             padding: 20px;
         }
@@ -648,7 +662,7 @@
         #preview-container {
             background-color: #e5ddd5;
             border-radius: 5px;
-            width: 95%;
+            width: 100%;
             height: 300px;
             overflow-y: auto;
             padding: 10px;
@@ -680,8 +694,8 @@
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 5px;
-            width: 92%;
-            max-width: 92%;
+            width: 100%;
+            max-width: 100%;
             word-wrap: break-word;
             box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -712,6 +726,12 @@
             clear: both;
             display: table;
         }
+        /*@media (max-width: 768px) {*/
+        /*    .pre-landing {*/
+        /*    width: auto;*/
+        /*    height: 100vh;*/
+        /*    }*/
+        /*}*/
     </style>
 </head>
 
@@ -719,16 +739,16 @@
     <div class="pre-landing">
         {{-- <img src="images/couple.png" alt="Couple"> --}}
         <h1 class="slide-in" style="font-family: Quaylike; font-size: 25pt">The Wedding of</h1>
-        <br><br>
+        <br>
         <img class="slide-left" src="{{ asset('img/nama.png') }}" style="width: 70%">
-        <br><br>
-        <p class="slide-right">Kepada Yth.</p>
-        <p class="slide-right">Bapak/Ibu/Saudara/i</p>
+        <br>
+        <p class="slide-right" style="padding: 0px; margin: 0px">Kepada Yth.</p>
+        <p class="slide-right" style="padding: 0px; margin: 0px">Bapak/Ibu/Saudara/i</p>
         <p class="slide-right" style="color: white"><b>{{ Str::upper($data->nama) }}</b></p>
-        <br><br>
+        <br>
         <button class="slide-out" onclick="openInvitation()"><i class="fas fa-envelope"></i> Buka Undangan</button>
         <audio id="backgroundMusic" loop>
-            <source src="{{ asset('build/assets/Tiara Andini, Arsy Widianto - Lagu Pernikahan Kita.mp3') }}"
+            <source src="{{ asset('adminlte/Tiara Andini, Arsy Widianto - Lagu Pernikahan Kita.mp3') }}"
                 type="audio/mpeg">
         </audio>
     </div>
@@ -739,7 +759,8 @@
             <header
                 style="background: url({{ asset('img/bg-hp2.png') }}) no-repeat center center;background-size: cover;height: 100vh;display: flex;align-items: center;justify-content: center;">
                 <h1 class="slide-in" style="font-family: Quaylike; font-size: 25pt">Save The Date</h1>
-                <img class="animate__animated animate__pulse" src="{{ asset('img/nama_cover.png') }}" style="width: 70%">
+                <img class="animate__animated animate__pulse" src="{{ asset('img/nama_cover.png') }}"
+                    style="width: 70%">
                 <p class="slide-out"><b>Sabtu, 17 Agustus 2024</b></p>
                 <div class="timer">
                     <div class="timer-jalan slide-out"><span id="days">00</span>
@@ -786,36 +807,37 @@
             <section id="event">
                 {{-- <p class="slide-in" style="padding-bottom: 10px">Dengan izin Allah acara akan dilaksanakan pada :</p> --}}
                 <div style="width: ">
-                    <p class="slide-left" style="padding: 5px 5px 5px 20px; text-align: left"><b><i
+                    <p class="slide-left" style="padding: 0px 0px 0px 20px; text-align: left; margin: 0px"><b><i
                                 class="fas fa-calendar-alt"></i>
-                            Sabtu, 17 Agustus 2023</b></p>
-                    <p class="slide-left" style="padding: 5px 5px 5px 20px; text-align: left"><b><i
+                            Sabtu, 17 Agustus 2024</b></p>
+                    <p class="slide-left" style="padding: 0px 0px 0px 20px; text-align: left; margin: 0px"><b><i
                                 class="far fa-clock fa-spin"></i>
                             09.30 WIB - 16.30 WIB</b></p>
-                    <p class="slide-left" style="padding: 5px 5px 5px 20px; text-align: left"><b><i
+                    <p class="slide-left" style="padding: 0px 0px 0px 20px; text-align: left; margin: 0px"><b><i
                                 class="fas fa-clock fa-spin"></i>
                             18.00 WIB - Selesai</b></p>
                 </div>
                 <p class="slide-right" style="padding-top: 10px;"><b><i class="fas fa-map-marked-alt"></i> PONDOK
                         PESANTREN ENTREPRENEUR</b></p>
                 <p class="slide-right"><b>DAR AL-RAUDHAH</b></p>
-                <p class="slide-right"><b><i class="fas fa-map-marker-alt"></i> Jl. Raya
+                <p class="slide-right" style="padding: 0px; margin: 0px"><b><i class="fas fa-map-marker-alt"></i> Jl. Raya
                         Bungur Tatas RT.26, Baru, Arut Selatan, Kotawaringin Barat, Kalimantan Tengah</b></p>
-                <br>
-                <p class="slide-out" style="padding: 0px">Atas kehadiran dan do'a restunya kami ucapkan banyak terima
+                <p class="slide-out" style="padding: 10px 0px 10px 0px; margin: 0px">Atas kehadiran dan do'a restunya kami ucapkan banyak terima
                     kasih
                 </p>
-                <h2 class="slide-left" style="padding: 0px; margin: 0px">Hormat kami</h2>
+                <h4 class="slide-left" style="padding: 0px; margin: 0px">Hormat kami</h4>
                 <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Keluarga
                 </p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Muhammad Sulaiman Nur Basyaiban,
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">K.H Muhammad Sulaiman Nur Basyaiban,
                     M.Pd</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Nyai Hj. Anny Hermawati, S.H</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">K.H Achmad Muhalli (Alm)</p>
-                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt)">Nyai Hj. Maimunah</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Nyai Hj. Anny Hermawati, S.H</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Keluarga</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">K.H Achmad Muhalli (Alm)</p>
+                <p class="slide-left" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Nyai Hj. Maimunah</p>
+                <img class="slide-out" src="{{ asset('img/wassalam.png') }}" alt="wassalam"
+                    style="padding: 0px; margin: 0px; width: 70%">
                 <br>
-                <h2 class="slide-right" style="padding: 0px; margin: 0px">Turut Mengundang</h2>
+                <h4 class="slide-right" style="padding: 0px; margin: 0px">Turut Mengundang</h4>
                 <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt); padding: 0px; margin: 0px">Pihak
                     Mempelai Wanita</p>
                 <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
@@ -826,13 +848,12 @@
                 <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">Keluarga Besar Pondok Pesantren
                     Baity Raya</p>
                 <p class="slide-right" style="font-size: clamp(11pt, 2.5vw, 16pt)">PAMEKASAN - JATIM</p>
-                <img class="slide-out" src="{{ asset('img/wassalam.png') }}" alt="wassalam"
-                    style="padding: 0px; margin: 0px; width: 70%">
+
 
             </section>
 
             <section id="kado">
-                <h1 class="slide-in" style="font-family: Quaylike;"><i class="fas fa-gifts"></i> Kado Digital</h1>
+                <h4 class="slide-in" style="font-family: Quaylike;"><i class="fas fa-gifts"></i> Kado Digital</h4>
                 <p class="slide-in">Doa Restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika memberi
                     adalah ungkapan
                     tanda terima kasih Anda, Anda dapat memberi kado secara langsung atau tidak langsung.</p>
@@ -840,26 +861,26 @@
                 <button id="openModalButton" class="slide-in button-modal"><i class="fa fa-envelope"></i> Kirim
                     Kado</button>
                 <br><br>
-                <h2 class="slide-out" style="font-family: Quaylike;">Live Streaming</h2>
+                <h4 class="slide-out" style="font-family: Quaylike;">Live Streaming</h4>
                 <p class="slide-out">Anda Juga bisa melihat berlangsungnya acara bahagia kami dengan menyaksikan
                     melalui
                     live akun media
                     sosial kami</p>
                 <br>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="slide-out custom-button"><i
-                        class="fas fa-video"></i> Live Streaming</a>
+                <button id="openModalButton2" class="slide-out button-modal"><i class="fas fa-video"></i> Live
+                    Streaming</button>
 
                 <div id="myModal" class="modal">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3><i class="fas fa-gift"></i> Kirim Kado</h3>
+                            <h5><i class="fas fa-gift"></i> Kirim Kado</h5>
                             <span class="close">&times;</span>
                         </div>
                         <div class="modal-body">
-                            <h2 class="slide-zoomIn">BANK</h2>
-                            <p class="slide-left">a.n NUR ALIA AL-TSANIA</p>
-                            <p class="slide-left">1234567890</p>
-                            <textarea id="textToCopy" rows="4" cols="50" hidden>1234567890</textarea>
+                            <h2 class="slide-zoomIn">BANK BCA</h2>
+                            <p class="slide-left">a.n Anny Hernawati</p>
+                            <p class="slide-left">8585135352</p>
+                            <textarea id="textRekening" rows="4" cols="50" hidden>8585135352</textarea>
                             <br>
                             <button class="slide-left custom-button" id="copyRekening"><i class="fas fa-copy"></i>
                                 Salin No. Rekening</button>
@@ -874,26 +895,84 @@
                             <textarea id="textAlamat" rows="4" cols="50" hidden>Jl. Raya Bungur Tatas RT.26, Baru, Arut Selatan, Kotawaringin Barat, Kalimantan Tengah</textarea>
                             <br>
                             <button class="slide-right custom-button" id="copyAlamat"><i class="fas fa-copy"></i>
-                                Salin
-                                Alamat</button>
+                                Salin Alamat</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal2" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5><i class="fab fa-youtube"></i> Live Streaming</h5>
+                            <span class="close2">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="slide-in"
+                                style="font-family: Quaylike; font-size: 17pt; margin: 0px; padding: 0px">Prosesi Akad
+                            </div>
+                            <div style="margin: 0px; padding: 0px">
+                                <p class="slide-left" style="padding: 5px 5px 5px 5px; text-align: center"><b><i
+                                            class="fas fa-calendar-alt"></i>
+                                        Jum'at, 16 Agustus 2024</b></p>
+                                <p class="slide-left" style="padding: 5px 5px 5px 5px; text-align: center"><b><i
+                                            class="far fa-clock fa-spin"></i>
+                                        13.00 WIB - Selesai</b></p>
+                            </div>
+                            <a href="https://youtube.com/live/nsU-0qYppWU?feature=share" target="_blank"
+                                rel="noopener noreferrer" class="custom-button slide-left"><i
+                                    class="fab fa-youtube"></i> Lihat</a>
+                            <br>
+                            <div class="slide-in"
+                                style="font-family: Quaylike; font-size: 17pt; margin: 0px; padding: 0px">Resepsi</div>
+                            <div style="margin: 0px; padding: 0px">
+                                <p class="slide-right" style="padding: 5px 5px 5px 5px; text-align: center"><b><i
+                                            class="fas fa-calendar-alt"></i>
+                                        Sabtu, 17 Agustus 2024</b></p>
+                                <p class="slide-right" style="padding: 5px 5px 5px 5px; text-align: center"><b><i
+                                            class="far fa-clock fa-spin"></i>
+                                        09.30 WIB - 16.30 WIB</b></p>
+                                <p class="slide-right" style="padding: 5px 5px 5px 5px; text-align: center"><b><i
+                                            class="fas fa-clock fa-spin"></i>
+                                        18.00 WIB - Selesai</b></p>
+                            </div>
+                            <a href="https://youtube.com/live/74ZoSdIaMp0?feature=share" target="_blank"
+                                rel="noopener noreferrer" class="custom-button slide-right"><i
+                                    class="fab fa-youtube"></i> Lihat</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="rsvp">
-                <h2 style="font-family: Quaylike" class="slide-in">PESAN</h2>
+            <section id="rsvp" style="align-content: flex-start">
+                <h4 style="font-family: Quaylike" class="slide-in">PESAN</h4>
                 <form method="post" action="{{ route('kirim-pesan', $slug) }}">
                     @csrf
                     <input type="text" name="id_slug" value="{{ $slug }}" hidden>
-                    <label class="slide-out" for="name">Nama</label>
-                    <input class="slide-out" type="text" name="nama" placeholder="Masukkan Nama Anda"
-                        value="{{ Str::title($data->nama) }}">
-
-                    <label class="slide-out" for="pesan">Pesan</label>
-                    <textArea class="slide-out" name="pesan" rows="5" placeholder="Tuliskan Pesan Anda"></textArea>
+                    <label class="slide-out" for="name" style="text-align: left">Nama</label>
+                    <input class="form-control slide-out" type="text" name="nama" id="nama"
+                        placeholder="Masukkan Nama Anda" value="{{ Str::title($data->nama) }}">
+                    <div class="form-group">
+                        <center>
+                            <div class="text-bold slide-out">Kehadiran</div>
+                        </center>
+                        <div class="row text-center">
+                            <div class="custom-control custom-radio col-sm-6 col-6 slide-left">
+                                <input class="custom-control-input custom-control-input-success" name="absen"
+                                    type="radio" id="customRadio1" value="1" required>
+                                <label for="customRadio1" class="custom-control-label">HADIR</label>
+                            </div>
+                            <div class="custom-control custom-radio col-sm-6 col-6 slide-right">
+                                <input class="custom-control-input custom-control-input-success" name="absen"
+                                    type="radio" id="customRadio2" value="0" required>
+                                <label for="customRadio2" class="custom-control-label">TIDAK HADIR</label>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="text-left slide-out" for="pesan" style="text-align: left;">Pesan</label>
+                    <textArea class="form-control slide-out" name="pesan" id="pesan" rows="3"
+                        placeholder="Tuliskan Pesan Anda" required></textArea>
                     <br>
-                    <button type="submit" class="custom-button slide-out"><b><i class="fa fa-envelope"></i>
+                    <button type="submit" class="custom-button slide-out"><b><i
+                                class="fa fa-envelope"></i>
                             Kirim</b></button>
                 </form>
                 <br>
@@ -919,10 +998,9 @@
                 <br>
                 <div class="slide-out"
                     style="border: 2px double #135e00; width: 90%; border-radius:10px; height: 150px">
-                    <br>
-                    <h3 style="padding: 0px; margin: 0px">Design By :</h3>
-                    <h5 style="padding: 0px; margin: 0px">TIM IT DARA & MEDIA DARA</h5>
-                    <h3 style="padding: 0px; margin: 0px">Support :</h3>
+                    <h5 style="padding: 0px; margin: 10px 0px 0px 0px">Design By :</h5>
+                    <h6 style="padding: 0px; margin: 0px">TIM IT DARA & MEDIA DARA</h6>
+                    <h5 style="padding: 0px; margin: 0px">Support :</h5>
                     <br>
                     <div id="support">
                         <a href="https://www.youtube.com/@daratv_Channel" target="_blank" rel="noopener noreferrer"
@@ -964,6 +1042,18 @@
 
 
     </div>
+
+    <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
+    <!-- jquery -->
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="{{ asset('adminlte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    {{-- <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> --}}
+    <!-- AdminLTE App -->
+    <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
+    @include('sweetalert::alert')
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -1091,60 +1181,71 @@
     <script>
         // Mendapatkan elemen modal
         var modal = document.getElementById("myModal");
+        var modal2 = document.getElementById("myModal2");
 
         // Mendapatkan tombol yang membuka modal
         var btn = document.getElementById("openModalButton");
+        var btn2 = document.getElementById("openModalButton2");
 
         // Mendapatkan elemen <span> yang menutup modal
         var span = document.getElementsByClassName("close")[0];
+        var span2 = document.getElementsByClassName("close2")[0];
+
 
         // Ketika tombol diklik, buka modal
         btn.onclick = function() {
             modal.style.display = "block";
+        }
+        btn2.onclick = function() {
+            modal2.style.display = "block";
         }
 
         // Ketika pengguna mengklik <span> (x), tutup modal
         span.onclick = function() {
             modal.style.display = "none";
         }
+        span2.onclick = function() {
+            modal2.style.display = "none";
+        }
 
         // Ketika pengguna mengklik di luar modal, tutup modal
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            } else if (event.target == modal2) {
+                modal2.style.display = "none";
             }
         }
     </script>
     <script>
         document.getElementById("copyRekening").addEventListener("click", function() {
-            // Mendapatkan elemen textarea
-            var textToCopy = document.getElementById("textToCopy");
+            var textToCopy2 = document.getElementById("textRekening");
 
             // Menyeleksi teks dalam textarea
-            textToCopy.select();
-            textToCopy.setSelectionRange(0, 99999); // Untuk perangkat mobile
+            textToCopy2.select();
+            textToCopy2.setSelectionRange(0, 99999); // Untuk perangkat mobile
 
             // Menyalin teks ke clipboard
             document.execCommand("copy");
 
             // Menampilkan alert bahwa teks telah disalin
-            alert("No Rekening Berhasil disalin: " + textToCopy.value);
+            alert("Alamat Berhasil disalin: " + textToCopy2.value);
         });
     </script>
     <script>
         document.getElementById("copyAlamat").addEventListener("click", function() {
             // Mendapatkan elemen textarea
-            var textToCopy = document.getElementById("textAlamat");
+            var textToCopy2 = document.getElementById("textAlamat");
 
             // Menyeleksi teks dalam textarea
-            textToCopy.select();
-            textToCopy.setSelectionRange(0, 99999); // Untuk perangkat mobile
+            textToCopy2.select();
+            textToCopy2.setSelectionRange(0, 99999); // Untuk perangkat mobile
 
             // Menyalin teks ke clipboard
             document.execCommand("copy");
 
             // Menampilkan alert bahwa teks telah disalin
-            alert("Alamat Berhasil disalin: " + textToCopy.value);
+            alert("Alamat Berhasil disalin: " + textToCopy2.value);
         });
     </script>
 </body>
