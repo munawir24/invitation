@@ -10,7 +10,7 @@ class Tamu extends Model
     use HasFactory;
     protected $table = 'tb_tamu';
     protected $fillable = [
-        'id_slug','slug_tamu','nama','nomor_hp'
+        'id_slug','slug_tamu','nama','nomor_hp','id_ig'
     ];
     public $timestamps = true;
     public function pesanan(){

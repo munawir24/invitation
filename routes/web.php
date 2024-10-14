@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
 
     // jenis undangan
     Route::get('/tipe-undangan', [TipeUndanganController::class, 'index'])->name('tipe-undangan');
-    Route::post('/tipe-undangan/create', [TipeUndanganController::class, 'store'])->name('simpan-tipe-undangan');
+    Route::post('/tipe-undangan/store', [TipeUndanganController::class, 'store'])->name('simpan-tipe-undangan');
     Route::get('/tipe-undangan/edit/{id}', [TipeUndanganController::class, 'edit'])->name('edit-tipe-undangan');
     Route::post('/tipe-undangan/update/{id}', [TipeUndanganController::class, 'update'])->name('perbarui-tipe-undangan');
     Route::get('/tipe-undangan/delete/{id}', [TipeUndanganController::class, 'destroy'])->name('hapus-tipe-undangan');

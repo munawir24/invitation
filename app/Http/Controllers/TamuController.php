@@ -43,6 +43,7 @@ class TamuController extends Controller
         $data->nama = $nama_tamu;
         $data->slug_tamu = Str::slug($nama_tamu, '-');
         $data->nomor_hp = $request->nomor_hp;
+        $data->id_ig = $request->id_ig;
         $data->save();
         alert()->success('Berhasil','Data Berhasil Disimpan');
         return redirect('tamu');

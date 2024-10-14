@@ -32,12 +32,12 @@
 
                     <!-- /.card-header -->
                     <div class="card-body table-responsive">
-                        <form action="" method="get" id="form-get" {{ Auth::user()->role == "USER" ? "hidden" : "" }}>
+                        <form action="" method="get" id="form-get"
+                            {{ Auth::user()->role == 'USER' ? 'hidden' : '' }}>
                             <div class="row">
                                 <div class="col-md-4 col-sm-7 col-9">
                                     <div class="input-group mb-2">
-                                        <label for="tahun_ajar" class="form-control text-right"
-                                            style="border: none">Tahun Ajaran</label>
+                                        <label for="tahun_ajar" class="form-control text-right" style="border: none">Pesanan</label>
                                         <select name="order" id="tahun_ajar" class="form-control" onchange="tahun()">
                                             @foreach ($order as $t)
                                                 <option value="{{ $t->slug }}"
@@ -60,6 +60,7 @@
                                         <th style="vertical-align: middle">NO</th>
                                         <th style="vertical-align: middle">NAMA TAMU</th>
                                         <th style="vertical-align: middle">NO WA</th>
+                                        <th style="vertical-align: middle">IG</th>
                                         <th style="vertical-align: middle">AKSI</th>
                                     </tr>
                                 </thead>
@@ -78,18 +79,25 @@
                                                             // Jika ya, ganti '08' menjadi '628'
                                                             $nomor_asal = '628' . substr($nomor_asal, 2);
                                                         }
-                                                        echo $nomor_asal;
-                                                    @endphp&text=Assalamualaikum Wr. Wb. Bapak/Ibu. %0A %0Ahttps://invitation.ponpesdara.com/wedding/alia-abdillah/{{$dt->slug_tamu}}"
+                                                        echo $nomor_asal; @endphp&text=Assalamualaikum Wr. Wb. Bapak/Ibu. %0A %0Ahttps://invitation.ponpesdara.com/wedding/alia-abdillah/{{ $dt->slug_tamu }}"
                                                         class="text-dark">{{ ' ' . $dt->nomor_hp }} </a></strong>
                                             </td>
+                                            <td> <i class="fab fa-instagram text-orange"></i> <strong><a target="_blank"
+                                                        href="https://ig.me/m/{{ $dt->id_ig }}"
+                                                        class="text-dark">{{ ' ' . $dt->id_ig }} </a></strong>
+                                            </td>
+
 
                                             <td class="text-center" style="vertical-align: middle">
-                                                <a target="_blank" href="{{ route('wedding-pesanan',$dt->slug_tamu) }}" class="btn btn-sm btn-primary text-bold"><i
-                                                    class="fa fa-eye"></i> Lihat</a>
-                                                <a href="{{ route('edit-tamu',$dt->id) }}" class="btn btn-sm btn-warning text-bold"><i
-                                                        class="fa fa-edit"></i> Edit</a>
+                                                <a target="_blank" href="{{ route('wedding-pesanan', $dt->slug_tamu) }}"
+                                                    class="btn btn-sm btn-primary text-bold"><i class="fa fa-eye"></i>
+                                                    Lihat</a>
+                                                <a href="{{ route('edit-tamu', $dt->id) }}"
+                                                    class="btn btn-sm btn-warning text-bold"><i class="fa fa-edit"></i>
+                                                    Edit</a>
                                                 <button class="btn btn-sm btn-danger text-bold"
-                                                    onclick="confirmDelete({{ $dt->id }})"><i class="fa fa-trash"></i>
+                                                    onclick="confirmDelete({{ $dt->id }})"><i
+                                                        class="fa fa-trash"></i>
                                                     Hapus</button>
                                             </td>
                                         </tr>
@@ -97,10 +105,11 @@
                                 </tbody>
                                 <tfoot hidden>
                                     <tr class="text-center">
-                                        <th>NO</th>
-                                        <th>NAMA PENGGUNA</th>
-                                        <th>LEVEL</th>
-                                        <th>AKSI</th>
+                                        <th style="vertical-align: middle">NO</th>
+                                        <th style="vertical-align: middle">NAMA TAMU</th>
+                                        <th style="vertical-align: middle">NO WA</th>
+                                        <th style="vertical-align: middle">IG</th>
+                                        <th style="vertical-align: middle">AKSI</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -130,18 +139,25 @@
                         </div>
                         <div class="form-group">
                             <label for="nomor">No WhatsApp</label>
-                            <input type="text" name="nomor_hp" id="nomor" inputmode="numeric" class="form-control">
+                            <input type="text" name="nomor_hp" id="nomor" inputmode="numeric"
+                                class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="ig">Username Instagram</label>
+                            <input type="text" name="id_ig" id="ig" class="form-control">
                         </div>
                         <div class="form-group" hidden>
                             <label for="id_slug">Order Undangan</label>
-                            <input type="text" name="id_slug" id="id_slug" class="form-control" value="{{ Auth::user()->id_slug == null ? $get_aktif : Auth::user()->id_slug }}">
+                            <input type="text" name="id_slug" id="id_slug" class="form-control"
+                                value="{{ Auth::user()->id_slug == null ? $get_aktif : Auth::user()->id_slug }}">
                         </div>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fa fa-close"></i>
+                    <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i
+                            class="fa fa-close"></i>
                         BATAL</button>
                     <button type="submit" class="btn btn-success text-bold">
-                        <i class="fas fa-user-save"></i> SIMPAN</button>
+                        <i class="fas fa-save"></i> SIMPAN</button>
                     </form>
                 </div>
             </div>

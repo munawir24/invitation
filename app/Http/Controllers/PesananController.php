@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
+use App\Models\TipeUndangan;
 
 class PesananController extends Controller
 {
@@ -12,8 +13,10 @@ class PesananController extends Controller
      */
     public function index()
     {
+        $no = 1;
         $data = Pesanan::all();
-        return view("pesanan.index", ['data' => $data]);
+        $tipe = TipeUndangan::all();
+        return view("pesanan.index", compact('no','data','tipe'));
 
     }
 

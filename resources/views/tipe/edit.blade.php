@@ -1,7 +1,7 @@
 @extends('layouts.admin-template')
 
 @section('title')
-    Edit Tamu Undangan
+    Edit Jenis Undangan
 @endsection
 
 @section('css')
@@ -14,27 +14,19 @@
                 <div class="card card-outline card-warning">
                     <div class="card-header text-center text-dark">
                         {{-- <img src="{{ asset('pictures/logo dara.png') }}" width="50" height="50"> --}}
-                        <p class="h1">Edit Tamu Undangan</p>
+                        <p class="h1">Edit Jenis Undangan</p>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('perbarui-tamu', $data->id) }}" method="POST" autocomplete="off">
+                        <form action="{{ route('perbarui-tipe-undangan', $data->id) }}" method="POST" autocomplete="off">
                             @csrf
                             <div class="form-group">
-                                <label for="nama">Nama Tamu</label>
+                                <label for="nama">Jenis Undangan</label>
                                 <input type="text" name="nama" id="nama" class="form-control"  value="{{ $data->nama }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="nomor">No WhatsApp</label>
-                                <input type="text" name="nomor_hp" id="nomor" inputmode="numeric" class="form-control" value="{{ $data->nomor_hp }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="ig">Username Instagram</label>
-                                <input type="text" name="id_ig" id="ig" class="form-control" value="{{ $data->id_ig }}">
                             </div>
                     </div>
                     <div class="card-footer">
                         <div class="row justify-content-around">
-                            <a href="{{ route('tamu') }}" class="btn btn-md btn-warning">
+                            <a href="{{ route('tipe-undangan') }}" class="btn btn-md btn-warning">
                                 <i class="fas fa-user-times"></i> Kembali</a>
                             <button type="submit" class="btn btn-md btn-success">
                                 <i class="fas fa-user-edit"></i> Perbarui</button>
